@@ -1,0 +1,15 @@
+<div class="container">
+  <a [routerLink]="['/']">← Back</a>
+
+  
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <div class="detail" *ngIf="product">
+    <img [src]="product.thumbnail" [alt]="product.title">
+    <h1>{{ product.title }}</h1>
+    <p class="category">{{ product.category }}</p>
+    <p class="description">{{ product.description }}</p>
+    <strong>$ {{ product.price }}</strong>
+  </div>
+</div>

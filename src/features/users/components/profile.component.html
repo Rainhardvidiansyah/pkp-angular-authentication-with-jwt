@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div class="card" *ngIf="profile">
+    <div class="avatar">{{ profile.email[0].toUpperCase() }}</div>
+    <h2>{{ profile.email }}</h2>
+    <p class="id">ID: {{ profile.id }}</p>
+    <div class="roles">
+      <span class="badge" *ngFor="let role of profile.roles">{{ role }}</span>
+    </div>
+  </div>
+</div>

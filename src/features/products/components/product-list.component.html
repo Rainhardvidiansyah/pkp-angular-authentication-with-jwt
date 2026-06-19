@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Products</h1>
+
+  <div class="search-box">
+    <input 
+      [(ngModel)]="searchQuery" 
+      (input)="onSearch()"
+      placeholder="Search products...">
+  </div>
+
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <div class="grid" *ngIf="!isLoading && !errorMessage">
+    <div class="card" *ngFor="let product of products" [routerLink]="['/products', product.id]" style="cursor: pointer;">
+      <img [src]="product.thumbnail" [alt]="product.title">
+      <div class="card-body">
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.description }}</p>
+        <strong>$ {{ product.price }}</strong>
+      </div>
+    </div>
+  </div>
+</div>
