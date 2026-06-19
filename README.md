@@ -1,59 +1,58 @@
-# ProductApp
+# PRODUCT APP PRAWATHIYA KARSA PRADIPTHA
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+Aplikasi frontend Angular untuk menampilkan data produk dan autentikasi pengguna, dibangun dengan pendekatan Clean Architecture dan pola MVVM.
 
-## Development server
+## Tech Stack
 
-To start a local development server, run:
+- Angular 19 (Standalone Component)
+- TypeScript
+- HTTP Client
+- Angular Router
 
+
+## Fitur
+
+- Menampilkan daftar produk
+- Search produk secara realtime
+- Detail produk
+- Login dengan JWT
+- Profile pengguna (autentikasi Bearer Token)
+  
+Flow autentikasi sendiri menggunakan projek pribadi saya sendiri, yang menggunakan NestJs. Adapun request dan response-nya seperti gambar di bawah ini:
+
+![Authentication Request](src/assets/images/Authentication%20Endpoint.png)
+
+![User Profile Endpoint](src/assets/images/User%20Profile%20Endpoint.png)
+![User profile in web browser](src/assets/images/User%20Profiles%20Web%20Browser.png)
+![Expired Access Token](src/assets/images/Expired%20Token.png)
+
+## Cara Menjalankna App
+
+Install dependencies:
+```bash
+npm install
+```
+
+Jalankan development server:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Buka browser di `http://localhost:4200`
 
-## Code scaffolding
+## API
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Produk menggunakan [DummyJSON](https://dummyjson.com/products).
 
-```bash
-ng generate component component-name
+Auth menggunakan backend NestJS lokal di `http://localhost:3033/api/v1`. Atau, jika mau dilakukan dengan project _Backend_ Anda sendiri, maka ganti nomor port dari 3033 sesuai dengan port pengembangan yang tengah dilakukan di komputer masing-masing.
+
+Penggantian port ini ada di file: `src/data/services/auth.service.ts`
+
+Ganti dari:
+```typescript
+private baseUrl = 'http://localhost:3033/api/v1/auth';
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+Menjadi:
+```typescript
+private baseUrl = 'http://localhost:{port yang disesuaikan}/api/v1/auth';
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
